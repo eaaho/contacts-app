@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import {MdDialog} from '@angular/material';
+import {Contact} from "./contact-list/contact";
+import {ContactService} from "./services/contact.service";
+
 
   @Component({
   selector: 'app-root',
@@ -9,5 +11,10 @@ import {MdDialog} from '@angular/material';
 
 
 export class AppComponent {
-  title = 'app works!';
+
+    contacts: Contact[];
+
+    constructor(contactService: ContactService){
+      this.contacts = contactService.findContacts();
+    }
 }
