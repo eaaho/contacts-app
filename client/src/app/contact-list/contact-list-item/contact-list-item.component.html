@@ -4,13 +4,15 @@
       <md-icon class="ca-contact-list-item-icon">account_circle</md-icon>
     </div>
   </div>
-  <md-card-content>
+  <md-card-content class="app-contact-text">
     <div>
       {{contact.firstName}} {{contact.lastName}}
     </div>
+    <br>
     <div>
       {{contact.phoneNumber}}
     </div>
+    <br>
     <div>
       {{contact.streetAddress}} {{contact.city}}
     </div>
@@ -25,6 +27,11 @@
       <div>
         <button md-icon-button>
           <md-icon>delete</md-icon>
+        </button>
+      </div>
+      <div fxFlex fxLayout="row" fxLayoutAlign="end right">
+        <button md-icon-button>
+          <md-icon>place</md-icon>
         </button>
       </div>
     </div>

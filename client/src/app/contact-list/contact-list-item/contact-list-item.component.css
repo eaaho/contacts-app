@@ -1,14 +1,18 @@
 .app-contact-list-item-container {
-  width: 400px;
+  width: 300px;
+}
+
+.app-contact-text {
+  font-size: 1.1em;
 }
 
 .app-contact-list-item-icon {
-  width: 80px;
-  height: 80px;
-  font-size: 40px;
-  color: azure;
+  width: 10px;
+  height: 10px;
+  font-size: 60px;
+  color: lightcyan;
 }
-.app-contact-list-iem-footer-icon {
+.app-contact-list-item-footer-icon {
   padding: 10px;
   color: lightcyan;
 }
