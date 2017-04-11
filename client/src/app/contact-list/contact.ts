@@ -55,7 +55,7 @@ export class Contact {
   private _streetAddress: string;
   private _city: string;
 
-  constructor(id: number, firstName: string, lastName: string, phoneNumber: string, streetAddress: string, city: string){
+  constructor(id: number, firstName: string, lastName: string, phoneNumber?: string, streetAddress?: string, city?: string){
     this._id = id;
     this._firstName = firstName;
     this._lastName = lastName;

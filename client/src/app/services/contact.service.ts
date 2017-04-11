@@ -8,12 +8,13 @@ export class ContactService {
 
   constructor() {
     this.contacts = [
-      new Contact(0, 'Testi', 'Käyttäjä', '01234567',
-        'Testikatu 3', 'Testikylä')
+      new Contact(0, 'Testi', 'Käyttäjä', '01234567','Testikatu 3', 'Testikylä'),
+      new Contact(1, 'Joku', 'Toinen', '98776543', 'Koepolku 2', 'Hikiä'),
+      new Contact(2, 'Ite', 'Piru','666666666','Pahakuja 6', 'Helkutti')
     ];
   }
 
-  findContacts(): Contact[]{
+  getContacts(): Contact[]{
     return this.contacts;
   }
 }

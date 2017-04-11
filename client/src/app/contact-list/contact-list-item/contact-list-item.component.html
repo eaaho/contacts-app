@@ -1,3 +1,32 @@
-<p>
-  contact-list-item works!
-</p>
+<md-card class="app-contact-list-item-container">
+  <div md-card-image>
+    <div fxLayout="row" fxLayoutAlign="center center" style="background: #7986CB">
+      <md-icon class="ca-contact-list-item-icon">account_circle</md-icon>
+    </div>
+  </div>
+  <md-card-content>
+    <div>
+      {{contact.firstName}} {{contact.lastName}}
+    </div>
+    <div>
+      {{contact.phoneNumber}}
+    </div>
+    <div>
+      {{contact.streetAddress}} {{contact.city}}
+    </div>
+  </md-card-content>
+  <md-card-actions>
+    <div fxLayout="row" fxLayOutAlign="space-between end">
+      <div>
+        <button md-icon-button>
+          <md-icon>edit</md-icon>
+        </button>
+      </div>
+      <div>
+        <button md-icon-button>
+          <md-icon>delete</md-icon>
+        </button>
+      </div>
+    </div>
+  </md-card-actions>
+</md-card>

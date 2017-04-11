@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Contact} from "./contact-list/contact";
+import {ContactListComponent} from "./contact-list/contact-list.component";
 import {ContactService} from "./services/contact.service";
-
+import {DialogService} from "./services/dialog.service";
 
   @Component({
   selector: 'app-root',
@@ -10,11 +11,14 @@ import {ContactService} from "./services/contact.service";
 })
 
 
-export class AppComponent {
+export class AppComponent implements OnInit{
 
     contacts: Contact[];
 
-    constructor(contactService: ContactService){
-      this.contacts = contactService.findContacts();
+    constructor(public contactService: ContactService){
     }
+
+    ngOnInit(): void{}
+
+    addContact() {}
 }
