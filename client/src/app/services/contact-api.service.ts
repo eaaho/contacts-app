@@ -7,7 +7,7 @@ export class ContactApiService implements ContactStore{
 
   constructor() { }
 
-  loadContacts(){}
+  loadData(){}
 
   saveContact(contact: Contact){}
 }

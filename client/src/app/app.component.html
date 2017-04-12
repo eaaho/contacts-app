@@ -1,7 +1,10 @@
 <div fxLayout="column" fxLayoutAlign="start center" class="app-container">
-  <app-contact-list>
+  <app-contact-list
     [contacts]="contacts"
-  </app-contact-list>
+    (editContact)="onEditContact($event)"
+    (removeContact)="onDeleteContact($event)"
+    (showContactOnMap)="onShowContactOnMap($event)"
+  ></app-contact-list>
 </div>
 <br>
 <div class ="add-button">

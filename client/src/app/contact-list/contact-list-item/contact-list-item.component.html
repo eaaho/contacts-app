@@ -20,17 +20,17 @@
   <md-card-actions>
     <div fxLayout="row" fxLayOutAlign="space-between end">
       <div>
-        <button md-icon-button>
+        <button md-icon-button (click)="editContact()">
           <md-icon>edit</md-icon>
         </button>
       </div>
       <div>
-        <button md-icon-button>
+        <button md-icon-button (click)="removeContact()">
           <md-icon>delete</md-icon>
         </button>
       </div>
       <div fxFlex fxLayout="row" fxLayoutAlign="end right">
-        <button md-icon-button>
+        <button md-icon-button (click)="showContactOnMap()">
           <md-icon>place</md-icon>
         </button>
       </div>

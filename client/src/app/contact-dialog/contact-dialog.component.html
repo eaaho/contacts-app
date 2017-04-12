@@ -1,0 +1,31 @@
+<h1 md-dialog-title>{{contact.id ? 'Edit Contact' : 'New Contact'}}</h1>
+<div md-dialog-content>
+  <md-input-container floatPlaceholder="auto">
+    <input mdInput [(ngModel)]="contact.firstName" required
+           placeholder="First Name" (ngModelChange)="validate()">
+  </md-input-container>
+  <br>
+  <md-input-container>
+    <input mdInput [(ngModel)]="contact.lastName" required
+           placeholder="Last Name" (ngModelChange)="validate()">
+  </md-input-container>
+  <br>
+  <md-input-container>
+    <input mdInput [(ngModel)]="contact.phoneNumber" placeholder="Phone">
+  </md-input-container>
+  <br>
+  <md-input-container>
+    <input mdInput [(ngModel)]="contact.streetAddress" placeholder="Street Address">
+  </md-input-container>
+  <br>
+  <md-input-container>
+    <input mdInput [(ngModel)]="contact.city" placeholder="City">
+  </md-input-container>
+</div>
+
+<div md-dialog-actions>
+  <button md-button (click)="cancel()">Cancel</button>
+  <button md-button (click)="add()" [disabled]="!isValid">
+    {{contact.id ? 'Save' : 'Add'}}</button>
+</div>
+

@@ -13,12 +13,39 @@ import {DialogService} from "./services/dialog.service";
 
 export class AppComponent implements OnInit{
 
-    contacts: Contact[];
+    contacts =[];
 
-    constructor(public contactService: ContactService){
-    }
+    constructor(public contactService: ContactService,
+                public dialog: DialogService){}
 
     ngOnInit(): void{}
 
-    addContact() {}
+    addContact() {
+      this.editAndSaveContact(null);
+    }
+    onEditContact(contact: Contact){
+      this.editAndSaveContact(contact);
+    }
+
+    onDeleteContact(contact: Contact){
+      this.contactService.deleteContact(contact);
+      this.reloadContacts();
+    }
+
+    onShowContactOnMap(contact: Contact){
+      let fullAddress = contact.streetAddress + ', ' + contact.city;
+    }
+
+    reloadContacts(){
+      this.contacts = this.contactService.findAllContacts();
+    }
+
+    private editAndSaveContact(contact) {
+      this.dialog.contactDialog(contact).subscribe(contact => {
+        if (contact) {
+          this.contactService.saveContact(contact);
+          this.reloadContacts();
+        }
+      });
+    }
 }

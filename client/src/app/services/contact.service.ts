@@ -1,20 +1,23 @@
 import { Injectable } from '@angular/core';
 import {Contact} from "../contact-list/contact";
+import {LocalStorageService} from "./localstorage.service";
 
 @Injectable()
 export class ContactService {
 
   private contacts: Contact[];
 
-  constructor() {
-    this.contacts = [
-      new Contact(0, 'Testi', 'Käyttäjä', '01234567','Testikatu 3', 'Testikylä'),
-      new Contact(1, 'Joku', 'Toinen', '98776543', 'Koepolku 2', 'Hikiä'),
-      new Contact(2, 'Ite', 'Piru','666666666','Pahakuja 6', 'Helkutti')
-    ];
+  constructor(public contactStore: LocalStorageService) {  }
+
+  saveContact(contact: Contact) {
+    this.contactStore.saveContact(contact);
   }
 
-  getContacts(): Contact[]{
-    return this.contacts;
+  deleteContact(contact: Contact) {
+    this.contactStore.deleteContact(contact);
+  }
+
+  findAllContacts() {
+    return this.contactStore.loadData();
   }
 }

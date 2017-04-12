@@ -8,13 +8,15 @@ import { AppComponent } from "./app.component";
 import { ContactListComponent } from './contact-list/contact-list.component';
 import {ContactService} from "./services/contact.service";
 import {ContactListItemComponent} from "./contact-list/contact-list-item/contact-list-item.component";
+import { ContactDialogComponent } from './contact-dialog/contact-dialog.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ContactListComponent,
-    ContactListItemComponent
+    ContactListItemComponent,
+    ContactDialogComponent
   ],
   imports: [
     BrowserModule,

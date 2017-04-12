@@ -1,6 +1,6 @@
 import {Contact} from "../contact-list/contact";
 
 export interface ContactStore {
-  loadContacts();
+  loadData();
   saveContact(contact: Contact);
 }

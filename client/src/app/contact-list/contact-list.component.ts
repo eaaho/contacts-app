@@ -1,6 +1,5 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {Contact} from "./contact";
-import {ContactService} from "../services/contact.service";
 
 @Component({
   selector: 'app-contact-list',
@@ -9,15 +8,13 @@ import {ContactService} from "../services/contact.service";
 })
 export class ContactListComponent implements OnInit {
 
-  @Input() contacts;
-  @Output() select: EventEmitter<Contact>;
+  @Input() contacts: [Contact];
+  @Output() editContact: EventEmitter<Contact> = new EventEmitter();
+  @Output() removeContact: EventEmitter<Contact> = new EventEmitter();
+  @Output() showContactOnMap: EventEmitter<Contact> = new EventEmitter();
 
-  constructor(contactService: ContactService) {
-    this.contacts = contactService.getContacts();
+  constructor() {}
 
-  }
-
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }
