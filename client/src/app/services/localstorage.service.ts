@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import {Contact} from "../contact-list/contact";
 import * as _ from "lodash";
-import {ContactStore} from "./contact-store";
 
 @Injectable()
-export class LocalStorageService implements ContactStore{
+export class LocalStorageService{
 
   private storageKey = 'app-contacts';
 

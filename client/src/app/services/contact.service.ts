@@ -5,7 +5,7 @@ import {LocalStorageService} from "./localstorage.service";
 @Injectable()
 export class ContactService {
 
-  private contacts: Contact[];
+  private contact: Contact[];
 
   constructor(public contactStore: LocalStorageService) {  }
 
