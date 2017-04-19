@@ -10,9 +10,16 @@ import {Contact} from "../contact";
 export class ContactListItemComponent {
 
   @Input() contact: Contact;
-  @Output() edit: EventEmitter<Contact>;
-  @Output() remove: EventEmitter<Contact>;
-  @Output() showOnMap: EventEmitter<Contact>;
+  @Input() edit: EventEmitter<Contact>;
+  @Input() remove: EventEmitter<Contact>;
+  @Input() showOnMap: EventEmitter<Contact>;
+
+
+  constructor() {
+    this.remove = new EventEmitter();
+    this.edit = new EventEmitter();
+    this.showOnMap = new EventEmitter();
+  }
 
   editContact() {
     this.edit.emit(this.contact);

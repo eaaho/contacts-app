@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Contact} from "../contact-list/contact";
 import {MdDialogRef} from "@angular/material";
 
+
 @Component({
   selector: 'app-contact-dialog',
   templateUrl: './contact-dialog.component.html'})
@@ -20,7 +21,6 @@ export class ContactDialogComponent implements OnInit {
     if(!this.contact) {
       this.contact = new Contact();
     }
-
     this.validate();
   }
 

@@ -10,7 +10,6 @@ import {DialogService} from "./services/dialog.service";
   styleUrls: ['./app.component.css']
 })
 
-
 export class AppComponent implements OnInit{
 
     contacts =[];
@@ -18,7 +17,9 @@ export class AppComponent implements OnInit{
     constructor(public contactService: ContactService,
                 public dialog: DialogService){}
 
-    ngOnInit(): void{}
+    ngOnInit(): void{
+      this.reloadContacts();
+    }
 
     addContact() {
       this.editAndSaveContact(null);

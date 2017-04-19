@@ -1,6 +1,9 @@
-<div *ngFor="let contact of contacts ; let i = index;">
+<div *ngFor="let contact of contacts;">
   <app-contact-list-item
     [contact]="contact"
+    [edit]="editContact"
+    [remove]="removeContact"
+    [showOnMap]="showContactOnMap"
   ></app-contact-list-item>
   <br>
 <div>
