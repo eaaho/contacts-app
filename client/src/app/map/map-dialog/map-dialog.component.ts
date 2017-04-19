@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-map-dialog',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MapDialogComponent implements OnInit {
 
-  constructor() { }
+  url: string;
+  fullAddress: string;
 
+  constructor(public sanitizer: DomSanitizer) { }
+
+  bypassSecTrustResUrl(url){
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
   ngOnInit() {
+    this.url = 'https://www.google.com/maps?output=embed&q=' + this.fullAddress;
   }
 
 }

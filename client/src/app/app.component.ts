@@ -35,6 +35,7 @@ export class AppComponent implements OnInit{
 
     onShowContactOnMap(contact: Contact){
       let fullAddress = contact.streetAddress + ', ' + contact.city;
+      this.dialog.mapDialog(fullAddress);
     }
 
     reloadContacts(){

@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { MaterialModule } from '@angular/material';
+import { MaterialRootModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppComponent } from "./app.component";
 import { ContactListComponent } from './contact-list/contact-list.component';
@@ -29,12 +29,12 @@ import { MapDialogComponent } from './map/map-dialog/map-dialog.component';
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
-    MaterialModule,
+    MaterialRootModule,
     FlexLayoutModule
   ],
   providers: [ContactService, LocalStorageService, DialogService],
   bootstrap: [AppComponent],
-  entryComponents:[ContactDialogComponent]
+  entryComponents:[ContactDialogComponent, MapDialogComponent]
 })
 
 export class AppModule { }
