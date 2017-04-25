@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
-import {Contact} from "../contact-list/contact";
 import * as _ from "lodash";
+import { ContactStorage } from "./contact-storage";
+import { Contact } from "../contact";
+import { Observable } from "rxjs";
 
 @Injectable()
-export class LocalStorageService{
+export class LocalStorageService implements ContactStorage {
 
   private storageKey = 'app-contacts';
 
@@ -26,8 +28,9 @@ export class LocalStorageService{
     localStorage.setItem(this.storageKey, infoString);
   }
 
-  public loadData() {
-    return this.readLocalStorage();
+  public loadContacts() {
+    let contacts: Contact[] = this.readLocalStorage();
+    return Observable.of(contacts);
   }
 
   public saveContact(contact: Contact) {
@@ -42,6 +45,7 @@ export class LocalStorageService{
       });
     }
     this.writeLocalStorage(contacts);
+    return Observable.of(contacts);
   }
 
   public deleteContact(contact: Contact) {
@@ -50,5 +54,6 @@ export class LocalStorageService{
       return _.isEqual(contact.id, c.id);
     });
     this.writeLocalStorage(contacts);
+    return Observable.of(contacts);
   }
 }

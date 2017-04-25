@@ -1,0 +1,14 @@
+.app-login-card-background{
+  width: 275px;
+  height: 120px;
+  background-image: url("/src/assets/blue-background.png");
+  background-position-y: 160px;
+  background-size: cover;
+}
+
+.app-login-card-title{
+  font-size: 24px;
+  color: white;
+  padding-left: 28px;
+  padding-top: 25px;
+}

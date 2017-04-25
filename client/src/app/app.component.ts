@@ -1,53 +1,48 @@
-import {Component, OnInit} from '@angular/core';
-import {Contact} from "./contact-list/contact";
-import {ContactListComponent} from "./contact-list/contact-list.component";
-import {ContactService} from "./services/contact.service";
-import {DialogService} from "./services/dialog.service";
+import {Component, HostListener, OnInit, ViewChild} from '@angular/core';
+import {MdSidenav} from "@angular/material";
+import {NavigationEnd, Router} from "@angular/router";
+import * as _ from 'lodash';
 
   @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
-})
+  })
 
 export class AppComponent implements OnInit{
 
-    contacts =[];
+    toolbarVisible: boolean;
+    sidenavMode: string;
 
-    constructor(public contactService: ContactService,
-                public dialog: DialogService){}
+    @ViewChild('sidenav') sidenav: MdSidenav;
 
-    ngOnInit(): void{
-      this.reloadContacts();
+    @HostListener('window:resize', ['$event'])
+    onWindowResize(event) {
+      let width = event ? event.target.innerWidth : window.innerWidth;
+      this.sidenavMode = width >= 600 ? 'side' : 'over';
     }
 
-    addContact() {
-      this.editAndSaveContact(null);
-    }
-    onEditContact(contact: Contact){
-      this.editAndSaveContact(contact);
+    constructor(private router: Router){
+      this.toolbarVisible = true;
+      this.sidenavMode = 'over';
     }
 
-    onDeleteContact(contact: Contact){
-      this.contactService.deleteContact(contact);
-      this.reloadContacts();
+    toggle(){
+      this.sidenav.toggle(!this.sidenav._isOpened);
     }
 
-    onShowContactOnMap(contact: Contact){
-      let fullAddress = contact.streetAddress + ', ' + contact.city;
-      this.dialog.mapDialog(fullAddress);
+    ngOnInit():void {
+      this.onWindowResize(null);
+      this.router.events.subscribe(event => {
+        if (event instanceof NavigationEnd) {
+          if (_.isEqual(event.urlAfterRedirects, '/') || _.isEqual(event.urlAfterRedirects, '/login'))
+          {
+            this.toolbarVisible = false;
+            return;
+          }
+          this.toolbarVisible = true;
+         }
+        });
     }
 
-    reloadContacts(){
-      this.contacts = this.contactService.findAllContacts();
-    }
-
-    private editAndSaveContact(contact) {
-      this.dialog.contactDialog(contact).subscribe(contact => {
-        if (contact) {
-          this.contactService.saveContact(contact);
-          this.reloadContacts();
-        }
-      });
-    }
 }
