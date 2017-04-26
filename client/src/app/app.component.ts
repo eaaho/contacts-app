@@ -1,5 +1,5 @@
 import {Component, HostListener, OnInit, ViewChild} from '@angular/core';
-import {MdSidenav} from "@angular/material";
+import {MdSidenav, MdToolbar} from "@angular/material";
 import {NavigationEnd, Router} from "@angular/router";
 import * as _ from 'lodash';
 
@@ -14,7 +14,8 @@ export class AppComponent implements OnInit{
     toolbarVisible: boolean;
     sidenavMode: string;
 
-    @ViewChild('sidenav') sidenav: MdSidenav;
+    @ViewChild('sideNav') sideNav: MdSidenav;
+
 
     @HostListener('window:resize', ['$event'])
     onWindowResize(event) {
@@ -23,26 +24,26 @@ export class AppComponent implements OnInit{
     }
 
     constructor(private router: Router){
-      this.toolbarVisible = true;
-      this.sidenavMode = 'over';
+      router.events.subscribe(event => {
+        if (event instanceof NavigationEnd) {
+          if (_.isEqual(event.urlAfterRedirects, '/') || _.isEqual(event.urlAfterRedirects, '/login'))
+          {
+            this.toolbarVisible = true;
+            this.sideNav.opened = true;
+          } else {
+            this.toolbarVisible = false;
+            this.sideNav.opened = false;
+          }
+        }
+      });
     }
 
-    toggle(){
-      this.sidenav.toggle(!this.sidenav._isOpened);
+    toggle() {
+      this.sideNav.toggle(!this.sideNav._isOpened);
     }
 
     ngOnInit():void {
       this.onWindowResize(null);
-      this.router.events.subscribe(event => {
-        if (event instanceof NavigationEnd) {
-          if (_.isEqual(event.urlAfterRedirects, '/') || _.isEqual(event.urlAfterRedirects, '/login'))
-          {
-            this.toolbarVisible = false;
-            return;
-          }
-          this.toolbarVisible = true;
-         }
-        });
     }
 
 }

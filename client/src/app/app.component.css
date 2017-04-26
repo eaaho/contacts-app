@@ -4,11 +4,17 @@
 }
 
 .app-sidenav{
-  width: 250px;
+  width: 230px;
 }
 
 .app-sidenav-content{
   padding: 100px 12px 12px;
+}
+
+.app-sidenav-toolbar{
+  height: 140px;
+  background-image: url("../assets/blue-background.png");
+  color: white;
 }
 
 .app-sidenav-container{
@@ -20,4 +26,9 @@
 
 .app-toolbar-placeholder-fix {
   height: 70px;
+}
+
+.mat-elevation-z5{
+  background-image: url("../assets/blue-background.png");
+  color: white;
 }

@@ -1,9 +1,11 @@
 <md-sidenav-container class="app-sidenav-container">
-    <md-sidenav *ngIf="toolBarVisible" class="app-sidenav" name="sidenav" #sidenav [mode]="sidenavMode" [opened]="sidenavMode =='side'">
 
-      <div class="app-sidenav-toolbar" fxLayout="row">
-        <div fxLayout="row" fxLayoutAlign="center start">
-          <md-icon class="md-30" style="width: 80px; height: 80px; font-size: 80px" >supervisor_account</md-icon>
+    <!--<md-sidenav *ngIf="toolBarVisible" class="app-sidenav" name="sideNav" #sideNav [mode]="sidenavMode" [opened]="sidenavMode == 'side'">-->
+    <md-sidenav class="app-sidenav" #sideNav name="sideNav" [mode]="sidenavMode" color="primary" [opened]="sidenavMode == 'side'">
+
+      <div fxLayout="row" class="app-sidenav-toolbar">
+        <div fxLayout="column" fxLayoutAlign="center start">
+          <md-icon class="md-30" style="width: 80px; height: 80px; font-size: 80px" >account_circle</md-icon>
           <div style="font-size: 14px">Esa Aho</div>
           <br>
           <div style="font-size: 10px">bti.golf@gmail.com</div>
@@ -12,12 +14,12 @@
       <div class="app-sidenav-content">TEST</div>
     </md-sidenav>
 
-    <md-toolbar *ngIf="toolbarVisible" class="mat-elevation-z5" color="primary">
+    <md-toolbar *ngIf="!toolBarVisible" class="mat-elevation-z5">
       <div fxLayout="row" fxLayoutAlign="start center">
         <button md-icon-button (click)="toggle()">
           <md-icon class="md-24">menu</md-icon>
         </button>
-        <h4>Contacts-app</h4>
+        <h4>Contacts</h4>
       </div>
 
     </md-toolbar>
