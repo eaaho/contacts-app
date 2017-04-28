@@ -1,7 +1,7 @@
 <md-sidenav-container class="app-sidenav-container">
 
     <!--<md-sidenav *ngIf="toolBarVisible" class="app-sidenav" name="sideNav" #sideNav [mode]="sidenavMode" [opened]="sidenavMode == 'side'">-->
-    <md-sidenav class="app-sidenav" #sideNav name="sideNav" [mode]="sidenavMode" color="primary" [opened]="sidenavMode == 'side'">
+    <md-sidenav *ngIf="this.toolbarVisible" class="app-sidenav" #sideNav name="sideNav" [mode]="sidenavMode" color="primary" [opened]="sidenavMode == 'side'">
 
       <div fxLayout="row" class="app-sidenav-toolbar">
         <div fxLayout="column" fxLayoutAlign="center start">
@@ -14,7 +14,7 @@
       <div class="app-sidenav-content">TEST</div>
     </md-sidenav>
 
-    <md-toolbar *ngIf="!toolBarVisible" class="mat-elevation-z5">
+    <md-toolbar *ngIf="this.toolbarVisible" class="mat-elevation-z5">
       <div fxLayout="row" fxLayoutAlign="start center">
         <button md-icon-button (click)="toggle()">
           <md-icon class="md-24">menu</md-icon>

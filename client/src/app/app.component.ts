@@ -28,11 +28,9 @@ export class AppComponent implements OnInit{
         if (event instanceof NavigationEnd) {
           if (_.isEqual(event.urlAfterRedirects, '/') || _.isEqual(event.urlAfterRedirects, '/login'))
           {
-            this.toolbarVisible = true;
-            this.sideNav.opened = true;
-          } else {
             this.toolbarVisible = false;
-            this.sideNav.opened = false;
+          } else {
+            this.toolbarVisible = true;
           }
         }
       });
