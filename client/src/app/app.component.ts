@@ -1,5 +1,5 @@
 import {Component, HostListener, OnInit, ViewChild} from '@angular/core';
-import {MdSidenav, MdToolbar} from "@angular/material";
+import {MdSidenav} from "@angular/material";
 import {NavigationEnd, Router} from "@angular/router";
 import * as _ from 'lodash';
 
@@ -23,7 +23,7 @@ export class AppComponent implements OnInit{
       this.sidenavMode = width >= 600 ? 'side' : 'over';
     }
 
-    constructor(private router: Router){
+    constructor(public router: Router){
       router.events.subscribe(event => {
         if (event instanceof NavigationEnd) {
           if (_.isEqual(event.urlAfterRedirects, '/') || _.isEqual(event.urlAfterRedirects, '/login'))
@@ -38,6 +38,10 @@ export class AppComponent implements OnInit{
 
     toggle() {
       this.sideNav.toggle(!this.sideNav._isOpened);
+    }
+
+    logout(){
+      this.router.navigate(['/login']);
     }
 
     ngOnInit():void {

@@ -11,9 +11,11 @@
   padding: 100px 12px 12px;
 }
 
-.app-sidenav-toolbar{
-  height: 140px;
+.app-sidenav-sidenav{
+  height: 240px;
   background-image: url("../assets/blue-background.png");
+  background-size: cover;
+  padding: 12px;
   color: white;
 }
 
@@ -29,6 +31,20 @@
 }
 
 .mat-elevation-z5{
-  background-image: url("../assets/blue-background.png");
+  background-color: #3e4fe8;
+/*  background-image: url("../assets/blue-background.png"); */
   color: white;
+}
+
+.app-sidenav-name
+{
+  padding-left: 10px;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.app-sidenav-address
+{
+  padding-left: 10px;
+  font-size: 14px;
 }

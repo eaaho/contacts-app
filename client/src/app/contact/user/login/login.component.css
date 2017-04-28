@@ -1,14 +1,15 @@
 .app-card{
   margin-top: 120px;
   margin-bottom: 160px;
+  border-radius: 7px;
 }
 
 .app-login-card-background{
-  width: 275px;
   height: 120px;
   background-image: url("/src/assets/blue-background.png");
-  background-position-y: 160px;
+  background-position-y: 100px;
   background-size: cover;
+  border-radius: 7px 7px 0px 0px;
 }
 
 .app-login-card-title{

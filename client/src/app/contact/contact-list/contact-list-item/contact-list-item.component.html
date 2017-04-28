@@ -1,22 +1,19 @@
 <md-card class="app-contact-list-item-container">
-  <div md-card-image>
-    <div fxLayout="row" fxLayoutAlign="center center" style="background: #7986CB">
-      <md-icon class="ca-contact-list-item-icon">account_circle</md-icon>
-    </div>
+  <div md-card-image fxLayout="column" class="app-color-primary-light app-contact-list-item-content">
+    <md-icon class="app-contact-list-item-icon">face</md-icon>
+    <md-card-content>
+      <div class="app-contact-list-item-title">
+        {{contact.firstName}} {{contact.lastName}}
+      </div>
+      <div class="app-contact-list-item-subtitle">
+        {{contact.streetAddress}}, {{contact.city}}
+      </div>
+      <div class="app-contact-list-item-subtitle">
+        {{contact.phoneNumber}}
+      </div>
+    </md-card-content>
   </div>
-  <md-card-content class="app-contact-text">
-    <div>
-      {{contact.firstName}} {{contact.lastName}}
-    </div>
-    <br>
-    <div>
-      {{contact.phoneNumber}}
-    </div>
-    <br>
-    <div>
-      {{contact.streetAddress}} {{contact.city}}
-    </div>
-  </md-card-content>
+
   <md-card-actions>
     <div fxLayout="row" fxLayOutAlign="space-between end">
       <div>
@@ -30,7 +27,7 @@
         </button>
       </div>
       <div fxFlex fxLayout="row" fxLayoutAlign="end right">
-        <button md-icon-button (click)="showContactOnMap()">
+        <button *ngIf="contact.streetAddress || contact.city" md-icon-button (click)="showContactOnMap()">
           <md-icon>place</md-icon>
         </button>
       </div>
