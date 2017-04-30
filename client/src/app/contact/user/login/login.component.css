@@ -6,8 +6,7 @@
 
 .app-login-card-background{
   height: 120px;
-  background-image: url("/src/assets/blue-background.png");
-  background-position-y: 100px;
+  background-image: url("/src/assets/indigo-background.jpg");
   background-size: cover;
   border-radius: 7px 7px 0px 0px;
 }

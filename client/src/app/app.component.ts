@@ -1,5 +1,5 @@
 import {Component, HostListener, OnInit, ViewChild} from '@angular/core';
-import {MdSidenav} from "@angular/material";
+import {MdSidenav, MdSnackBar} from "@angular/material";
 import {NavigationEnd, Router} from "@angular/router";
 import * as _ from 'lodash';
 
@@ -13,6 +13,7 @@ export class AppComponent implements OnInit{
 
     toolbarVisible: boolean;
     sidenavMode: string;
+    snackBar: MdSnackBar;
 
     @ViewChild('sideNav') sideNav: MdSidenav;
 
@@ -41,6 +42,7 @@ export class AppComponent implements OnInit{
     }
 
     logout(){
+ //     let snackBarRef = this.snackBar.open('You will be logged out.', 'CANCEL', {duration: 2500});
       this.router.navigate(['/login']);
     }
 
