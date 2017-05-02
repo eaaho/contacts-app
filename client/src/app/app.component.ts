@@ -25,6 +25,7 @@ export class AppComponent implements OnInit{
     }
 
     constructor(public router: Router){
+      this.toolbarVisible = true;
       router.events.subscribe(event => {
         if (event instanceof NavigationEnd) {
           if (_.isEqual(event.urlAfterRedirects, '/') || _.isEqual(event.urlAfterRedirects, '/login'))
