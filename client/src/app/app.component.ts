@@ -12,8 +12,8 @@ import * as _ from 'lodash';
 export class AppComponent implements OnInit{
 
     toolbarVisible: boolean;
+    logoutCancelled: boolean;
     sidenavMode: string;
-    snackBar: MdSnackBar;
 
     @ViewChild('sideNav') sideNav: MdSidenav;
 
@@ -24,7 +24,7 @@ export class AppComponent implements OnInit{
       this.sidenavMode = width >= 600 ? 'side' : 'over';
     }
 
-    constructor(public router: Router){
+    constructor(public router: Router, public snackBar: MdSnackBar){
       this.toolbarVisible = true;
       router.events.subscribe(event => {
         if (event instanceof NavigationEnd) {
@@ -43,9 +43,20 @@ export class AppComponent implements OnInit{
     }
 
     logout(){
- //     let snackBarRef = this.snackBar.open('You will be logged out.', 'CANCEL', {duration: 2500});
-      this.router.navigate(['/login']);
+      let snackBarRef = this.snackBar.open('You will be logged out.', 'CANCEL', {duration: 2000});
+      snackBarRef.onAction().subscribe(() => {
+        this.logoutCancelled = true;
+        snackBarRef.dismiss();
+      });
+      snackBarRef.afterDismissed().subscribe(() => {
+        if (!this.logoutCancelled) {
+          this.logoutCancelled = false;
+          this.router.navigate(['/login']);
+        } 
+      });
+      this.logoutCancelled = false;
     }
+
 
     ngOnInit():void {
       this.onWindowResize(null);
