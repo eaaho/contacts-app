@@ -40,3 +40,8 @@ html, body {
 .app-icon{
   color: #616161;
 }
+
+.mat-simple-snackbar-action {
+  color: #f90 !important;
+}
+

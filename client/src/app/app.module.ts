@@ -3,7 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
+import 'rxjs/add/operator/toPromise';
 import { MaterialRootModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppComponent } from "./app.component";
@@ -18,6 +18,9 @@ import { ContactApiService } from './contact/services/contact-api.service'
 import { RouterModule } from "@angular/router";
 import { LoginComponent } from './contact/user/login/login.component';
 import { ContactComponent } from './contact/contact.component';
+import { VibrationDirective } from './contact/services/vibration.directive';
+import { ContactAddressPipe } from './contact/pipes/contact-address.pipe';
+import {DeviceService} from "./contact/services/device.service";
 
   const routes = [{
       path:'',
@@ -39,7 +42,9 @@ import { ContactComponent } from './contact/contact.component';
     ContactDialogComponent,
     MapDialogComponent,
     LoginComponent,
-    ContactComponent
+    ContactComponent,
+    VibrationDirective,
+    ContactAddressPipe
   ],
   imports: [
     BrowserModule,
@@ -56,7 +61,8 @@ import { ContactComponent } from './contact/contact.component';
     LocalStorageService,
     DialogService,
     HttpModule,
-    ContactApiService],
+    ContactApiService,
+    DeviceService],
   bootstrap: [AppComponent],
   entryComponents:[
     ContactDialogComponent,

@@ -17,7 +17,6 @@ export class AppComponent implements OnInit{
 
     @ViewChild('sideNav') sideNav: MdSidenav;
 
-
     @HostListener('window:resize', ['$event'])
     onWindowResize(event) {
       let width = event ? event.target.innerWidth : window.innerWidth;
@@ -44,15 +43,17 @@ export class AppComponent implements OnInit{
 
     logout(){
       let snackBarRef = this.snackBar.open('You will be logged out.', 'CANCEL', {duration: 2000});
+
       snackBarRef.onAction().subscribe(() => {
         this.logoutCancelled = true;
         snackBarRef.dismiss();
       });
+
       snackBarRef.afterDismissed().subscribe(() => {
         if (!this.logoutCancelled) {
           this.logoutCancelled = false;
           this.router.navigate(['/login']);
-        } 
+        }
       });
       this.logoutCancelled = false;
     }

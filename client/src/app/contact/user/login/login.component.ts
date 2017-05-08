@@ -12,10 +12,10 @@ export class LoginComponent implements OnInit {
   user: Operator;
 
   constructor(private router: Router) {
-    this.user = new Operator();
   }
 
   ngOnInit() {
+    this.user = new Operator();
   }
 
   onLogin(){
