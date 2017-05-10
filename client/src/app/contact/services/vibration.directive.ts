@@ -10,7 +10,7 @@ export class VibrationDirective {
 
   @HostListener('click', ['$event'])
   onClick(){
-    this.device.vibrate(300);
+    this.device.vibrate();
   }
 
 }
