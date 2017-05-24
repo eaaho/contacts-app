@@ -1,21 +1,31 @@
 import { Injectable } from '@angular/core';
-import { Http } from "@angular/http";
 import {ContactStorage} from "./contact-storage";
 import {Contact} from "../contact";
 import {environment} from "../../../environments/environment";
+import {Observable} from "rxjs/Observable";
+import {HttpService} from "../utils/http.service";
 
 @Injectable()
 export class ContactApiService implements ContactStorage {
 
-  url = environment.endPointUrl;
+  private url : string = environment.endPointUrl;
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpService) { }
 
   loadContacts() {
     return this.http
       .get(this.url)
       .map(response => response.json() as Contact[]);
     }
+
+  findContactById(id): Observable<Contact> {
+    return this.http
+      .get(this.url)
+      .map(function (response) {
+        return response.json() as Contact;
+      });
+  }
+
 
   saveContact(contact: Contact){
     return contact.id ? this.updateContact(contact) : this.createContact(contact);

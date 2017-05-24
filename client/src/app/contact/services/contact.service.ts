@@ -10,6 +10,7 @@ import {environment} from "../../../environments/environment";
 export class ContactService {
 
   contactStorage: ContactStorage;
+
   private contact: Contact[];
 
   constructor(public contactLocalStorage: LocalStorageService,

@@ -1,6 +1,6 @@
 .app-container {
   overflow: auto;
-  height: 100%;
+  height: auto;
 }
 
 .app-sidenav{

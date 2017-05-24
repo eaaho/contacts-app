@@ -1,8 +1,8 @@
+///<reference path="contact/services/device.service.ts"/>
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { MaterialRootModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -18,9 +18,12 @@ import { ContactApiService } from './contact/services/contact-api.service'
 import { RouterModule } from "@angular/router";
 import { LoginComponent } from './contact/user/login/login.component';
 import { ContactComponent } from './contact/contact.component';
-import { VibrationDirective } from './contact/services/vibration.directive';
+import { VibrationDirective } from './contact/utils/vibration.directive';
 import { ContactAddressPipe } from './contact/pipes/contact-address.pipe';
-import {DeviceService} from "./contact/services/device.service";
+import { DeviceService } from "./contact/services/device.service";
+import { HttpService } from "./contact/utils/http.service";
+import { UserService } from "./contact/user/services/user.service";
+import { UserApiService } from "./contact/user/services/user-api.service";
 
   const routes = [{
       path:'',
@@ -51,7 +54,6 @@ import {DeviceService} from "./contact/services/device.service";
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpModule,
     MaterialRootModule,
     FlexLayoutModule,
     RouterModule.forRoot(routes)
@@ -60,8 +62,10 @@ import {DeviceService} from "./contact/services/device.service";
     ContactService,
     LocalStorageService,
     DialogService,
-    HttpModule,
+    HttpService,
     ContactApiService,
+    UserService,
+    UserApiService,
     DeviceService],
   bootstrap: [AppComponent],
   entryComponents:[

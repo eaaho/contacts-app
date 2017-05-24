@@ -1,5 +1,5 @@
 import { Directive, HostListener } from '@angular/core';
-import { DeviceService } from "./device.service";
+import { DeviceService } from "../services/device.service";
 
 @Directive({
   selector: '[appVibration]'
