@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from "@angular/router";
+import {NavigationExtras, Router} from "@angular/router";
 import { Operator } from "../operator";
 
 @Component({
@@ -11,7 +11,7 @@ export class LoginComponent implements OnInit {
 
   user: Operator;
 
-  constructor(private router: Router) {
+  constructor(public router: Router) {
   }
 
   ngOnInit() {
@@ -19,7 +19,12 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(){
-    this.router.navigate(['/contact']);
+    let navigationExtras : NavigationExtras = {
+      preserveQueryParams: true,
+      preserveFragment: true
+    };
+
+    this.router.navigate(['/contact'], navigationExtras);
   }
 
 }

@@ -24,6 +24,7 @@ import { DeviceService } from "./contact/services/device.service";
 import { HttpService } from "./contact/utils/http.service";
 import { UserService } from "./contact/user/services/user.service";
 import { UserApiService } from "./contact/user/services/user-api.service";
+import {HttpModule, ConnectionBackend, RequestOptions, XHRBackend} from "@angular/http";
 
   const routes = [{
       path:'',
@@ -36,6 +37,10 @@ import { UserApiService } from "./contact/user/services/user-api.service";
       path: 'contact',
       component: ContactComponent
     }];
+
+export function getHttp(backend: ConnectionBackend, options: RequestOptions) {
+  return new HttpService(backend, options);
+}
 
 @NgModule({
   declarations: [
@@ -62,7 +67,11 @@ import { UserApiService } from "./contact/user/services/user-api.service";
     ContactService,
     LocalStorageService,
     DialogService,
-    HttpService,
+    {
+      provide: HttpService,
+      useFactory: getHttp,
+      deps: [XHRBackend, RequestOptions]
+    },
     ContactApiService,
     UserService,
     UserApiService,
