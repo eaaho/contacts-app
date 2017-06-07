@@ -1,5 +1,5 @@
 .app-container {
-  overflow: auto;
+  overflow: hidden;
   height: auto;
 }
 
@@ -33,7 +33,7 @@
 }
 
 .mat-elevation-z5{
-  background-color: #3e4fe8;
+  background-color: #3F51B3;
   color: white;
 }
 

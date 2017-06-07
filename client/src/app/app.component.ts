@@ -18,9 +18,13 @@ export class AppComponent implements OnInit{
     @ViewChild('sideNav') sideNav: MdSidenav;
 
     @HostListener('window:resize', ['$event'])
+
     onWindowResize(event) {
       let width = event ? event.target.innerWidth : window.innerWidth;
       this.sidenavMode = width >= 600 ? 'side' : 'over';
+      let element = document.getElementById('main_container');
+      element.style.height = 'auto';
+      element.style.minHeight = '0';
     }
 
     constructor(public router: Router, public snackBar: MdSnackBar){

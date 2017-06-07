@@ -8,14 +8,16 @@ import {HttpService} from "../utils/http.service";
 @Injectable()
 export class ContactApiService implements ContactStorage {
 
-  private url : string = environment.endPointUrl;
+  private url : string = environment.contactUrl;
 
   constructor(private http: HttpService) { }
 
   loadContacts() {
     return this.http
       .get(this.url)
-      .map(response => response.json() as Contact[]);
+      .map(function (response){
+        return response.json() as Contact[];
+      });
     }
 
   findContactById(id): Observable<Contact> {

@@ -9,6 +9,7 @@ export class VibrationDirective {
   constructor(private device: DeviceService) { }
 
   @HostListener('click', ['$event'])
+
   onClick(){
     this.device.vibrate();
   }

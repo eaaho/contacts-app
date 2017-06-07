@@ -5,7 +5,7 @@ import {HttpService} from "../../utils/http.service";
 @Injectable()
 export class UserApiService {
 
-  private url: string = environment.endPointUrl + '/user';
+  private url: string = environment.userUrl;
 
   constructor(private http : HttpService) { }
 

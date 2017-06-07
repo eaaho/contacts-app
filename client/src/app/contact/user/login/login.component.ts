@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {NavigationExtras, Router} from "@angular/router";
+import { NavigationExtras, Router } from "@angular/router";
 import { Operator } from "../operator";
+import { UserService } from "../services/user.service";
+import { Subscription } from "rxjs/Subscription";
 
 @Component({
   selector: 'app-login',
@@ -9,9 +11,10 @@ import { Operator } from "../operator";
 })
 export class LoginComponent implements OnInit {
 
+  subscription: Subscription;
   user: Operator;
 
-  constructor(public router: Router) {
+  constructor(private userService: UserService, private router: Router) {
   }
 
   ngOnInit() {
@@ -19,12 +22,11 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(){
-    let navigationExtras : NavigationExtras = {
-      preserveQueryParams: true,
-      preserveFragment: true
-    };
 
-    this.router.navigate(['/contact'], navigationExtras);
+    this.subscription = this.userService.login(this.user.userName, this.user.passWord).subscribe(() =>
+    {
+      this.router.navigate(['/contact']);
+    });
   }
 
 }

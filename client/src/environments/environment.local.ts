@@ -3,5 +3,8 @@
  */
 export const environment = {
   production: false,
-  endPointUrl:''
+  endPointUrl: '',
+  authenticationUrl: '',
+  contactUrl: '',
+  userUrl: ''
 };

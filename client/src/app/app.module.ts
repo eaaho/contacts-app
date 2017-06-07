@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import 'rxjs/add/operator/toPromise';
+import 'hammerjs';
 import { MaterialRootModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppComponent } from "./app.component";
@@ -24,7 +25,8 @@ import { DeviceService } from "./contact/services/device.service";
 import { HttpService } from "./contact/utils/http.service";
 import { UserService } from "./contact/user/services/user.service";
 import { UserApiService } from "./contact/user/services/user-api.service";
-import {HttpModule, ConnectionBackend, RequestOptions, XHRBackend} from "@angular/http";
+import { ConnectionBackend, RequestOptions, XHRBackend } from "@angular/http";
+import { AuthenticationService } from "./contact/user/services/authentication.service";
 
   const routes = [{
       path:'',
@@ -75,6 +77,7 @@ export function getHttp(backend: ConnectionBackend, options: RequestOptions) {
     ContactApiService,
     UserService,
     UserApiService,
+    AuthenticationService,
     DeviceService],
   bootstrap: [AppComponent],
   entryComponents:[

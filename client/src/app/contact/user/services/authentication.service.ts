@@ -6,7 +6,7 @@ import {HttpService} from "../../utils/http.service";
 @Injectable()
 export class AuthenticationService {
 
-  private url: string = environment.endPointUrl + '/authentication';
+  private url: string = environment.authenticationUrl;
 
   constructor(private http : HttpService) { }
 
