@@ -1,0 +1,9 @@
+C:\Users\ekoodi\documents\visual studio 2017\Projects\WebApplication1\WebApplication1\bin\Debug\netcoreapp1.1\WebApi.deps.json
+C:\Users\ekoodi\documents\visual studio 2017\Projects\WebApplication1\WebApplication1\bin\Debug\netcoreapp1.1\WebApi.runtimeconfig.json
+C:\Users\ekoodi\documents\visual studio 2017\Projects\WebApplication1\WebApplication1\bin\Debug\netcoreapp1.1\WebApi.runtimeconfig.dev.json
+C:\Users\ekoodi\documents\visual studio 2017\Projects\WebApplication1\WebApplication1\bin\Debug\netcoreapp1.1\WebApi.dll
+C:\Users\ekoodi\documents\visual studio 2017\Projects\WebApplication1\WebApplication1\bin\Debug\netcoreapp1.1\WebApi.pdb
+C:\Users\ekoodi\documents\visual studio 2017\Projects\WebApplication1\WebApplication1\obj\Debug\netcoreapp1.1\WebApi.AssemblyInfo.cs
+C:\Users\ekoodi\documents\visual studio 2017\Projects\WebApplication1\WebApplication1\obj\Debug\netcoreapp1.1\WebApi.dll
+C:\Users\ekoodi\documents\visual studio 2017\Projects\WebApplication1\WebApplication1\obj\Debug\netcoreapp1.1\WebApi.pdb
+C:\Users\ekoodi\documents\visual studio 2017\Projects\WebApplication1\WebApplication1\obj\Debug\netcoreapp1.1\WebApi.csprojResolveAssemblyReference.cache
