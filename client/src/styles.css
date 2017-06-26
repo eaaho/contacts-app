@@ -45,3 +45,14 @@ html, body {
   color: #f90 !important;
 }
 
+.md-fab{
+  bottom: 30px;
+  right: 20px;
+  position: absolute;
+}
+
+.mat-fab{
+  position: relative;
+  z-index: 10;
+}
+

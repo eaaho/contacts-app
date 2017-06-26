@@ -1,14 +1,14 @@
-<md-card class="app-contact-list-item-container">
-  <div md-card-image fxLayout="column" class="app-color-primary-light app-contact-list-item-content">
-    <md-icon class="app-contact-list-item-icon">face</md-icon>
+<md-card class="app-contact-card-container">
+  <div md-card-image fxLayout="column" class="app-color-primary-light app-contact-card-content">
+    <md-icon class="app-contact-card-icon">face</md-icon>
     <md-card-content>
-      <div class="app-contact-list-item-title">
+      <div class="app-contact-card-title">
         {{contact.firstName}} {{contact.lastName}}
       </div>
-      <div class="app-contact-list-item-subtitle">
+      <div class="app-contact-card-subtitle">
         {{contact.streetAddress}}, {{contact.city}}
       </div>
-      <div class="app-contact-list-item-subtitle">
+      <div class="app-contact-card-subtitle">
         {{contact.phoneNumber}}
       </div>
     </md-card-content>
@@ -26,7 +26,7 @@
           <md-icon>delete</md-icon>
         </button>
       </div>
-      <div fxFlex fxLayout="row" fxLayoutAlign="end right">
+      <div>
         <button *ngIf="contact.streetAddress || contact.city" md-icon-button (click)="showContactOnMap()">
           <md-icon>place</md-icon>
         </button>
@@ -34,3 +34,4 @@
     </div>
   </md-card-actions>
 </md-card>
+

@@ -1,4 +1,32 @@
 .app-contact-list-container {
-  max-width: 400px;
-  padding-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding-bottom: 40px;
+}
+
+.app-contact-list{
+  width:100%;
+  max-width: 500px;
+}
+
+.app-no-contacts-text {
+  color: #BDBDBD;
+  font-size: 26px;
+}
+
+.app-no-contacts-icon {
+  height: 250px;
+  width: 250px;
+  color: #BDBDBD;
+  font-size: 250px;
+}
+
+.app-contact-card{
+  margin-top: 20px;
+}
+
+.app-float-action-button {
+  position: absolute;
+  right: 30px;
+  margin-bottom: 20px;
 }

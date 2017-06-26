@@ -11,7 +11,7 @@ export class VibrationDirective {
   @HostListener('click', ['$event'])
 
   onClick(){
-    this.device.vibrate();
+    navigator.vibrate([500]);
   }
 
 }

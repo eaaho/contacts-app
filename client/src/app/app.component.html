@@ -19,15 +19,14 @@
 
     <md-toolbar *ngIf="this.toolbarVisible" class="mat-elevation-z5">
       <div fxLayout="row" fxLayoutAlign="start center">
-        <button md-icon-button (click)="toggle()">
+        <button md-icon-button (click)="toggle()" id="contacts-button">
           <md-icon class="md-24">menu</md-icon>
         </button>
         <h4>Contacts</h4>
       </div>
-
     </md-toolbar>
 
-    <div fxFlexFill class="app-container" id="main_container">
+    <div fxFlexFill class="app-container" id="main-container">
         <router-outlet></router-outlet>
     </div>
 </md-sidenav-container>

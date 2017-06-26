@@ -1,15 +1,7 @@
-<div class="app-contact-list-container" fxLayout="column" fxLayoutAlign="start center">
-  <app-contact-list class="app-contact-list"
-    [contacts]="contacts"
-    (editContact)="onEditContact($event)"
-    (removeContact)="onDeleteContact($event)"
-    (showContactOnMap)="onShowContactOnMap($event)"
-  ></app-contact-list>
+<div fxFlexFill fxLayoutAlign="center start">
+    <div class="app-contact-container">
+      <md-card>
+        <app-contact-info [contact]="contact" (contactChanged)="validate()"></app-contact-info>
+      </md-card>
+    </div>
 </div>
-<div *ngIf="!contacts || !contacts.length" fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
-  <md-icon class="app-no-contacts-icon">account_circle</md-icon>
-  <p class="app-no-contacts-text">No contacts...</p>
-</div>
-<button md-fab color="primary" class="app-float-action-button" md-fab (click)="addContact()">
-  <md-icon>add</md-icon>
-</button>

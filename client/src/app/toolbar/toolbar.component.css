@@ -1,0 +1,18 @@
+.app-toolbar-search-container{
+  padding-left: 12px;
+}
+
+.app-toolbar-search{
+  width: 100%;
+  background: initial;
+  border: none;
+  font-size: 18px;
+  color: white;
+  /*border-bottom: 2px solid white;*/
+  outline: none;
+}
+
+.app-toolbar-search::-webkit-input-placeholder{
+  color: white;
+  opacity: 0.7;
+}

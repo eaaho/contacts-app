@@ -16,13 +16,12 @@ export class AppComponent implements OnInit{
     sidenavMode: string;
 
     @ViewChild('sideNav') sideNav: MdSidenav;
-
     @HostListener('window:resize', ['$event'])
 
     onWindowResize(event) {
       let width = event ? event.target.innerWidth : window.innerWidth;
       this.sidenavMode = width >= 600 ? 'side' : 'over';
-      let element = document.getElementById('main_container');
+      let element = document.getElementById('main-container');
       element.style.height = 'auto';
       element.style.minHeight = '0';
     }
@@ -36,6 +35,7 @@ export class AppComponent implements OnInit{
             this.toolbarVisible = false;
           } else {
             this.toolbarVisible = true;
+            // tähän tulee tdloadingin lopetus
           }
         }
       });
@@ -61,7 +61,6 @@ export class AppComponent implements OnInit{
       });
       this.logoutCancelled = false;
     }
-
 
     ngOnInit():void {
       this.onWindowResize(null);

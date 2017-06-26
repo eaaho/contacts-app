@@ -5,12 +5,12 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import 'rxjs/add/operator/toPromise';
 import 'hammerjs';
+import 'lodash';
 import { MaterialRootModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppComponent } from "./app.component";
 import { ContactListComponent } from './contact/contact-list/contact-list.component';
 import { ContactService } from "./contact/services/contact.service";
-import { ContactListItemComponent } from "./contact/contact-list/contact-list-item/contact-list-item.component";
 import { ContactDialogComponent } from './contact/contact-dialog/contact-dialog.component';
 import { LocalStorageService } from "./contact/services/localstorage.service";
 import { DialogService } from "./contact/services/dialog.service";
@@ -27,34 +27,37 @@ import { UserService } from "./contact/user/services/user.service";
 import { UserApiService } from "./contact/user/services/user-api.service";
 import { ConnectionBackend, RequestOptions, XHRBackend } from "@angular/http";
 import { AuthenticationService } from "./contact/user/services/authentication.service";
+import { ToolbarComponent } from './toolbar/toolbar.component';
+import { ToolbarService } from "./toolbar/toolbar.service";
+import { ContactCardComponent } from './contact/contact-card/contact-card.component';
+import { ContactInfoComponent } from './contact/contact-info/contact-info.component';
 
-  const routes = [{
-      path:'',
-      redirectTo: 'login',
-      pathMatch: 'full'
-    },{
-      path:'login',
-      component: LoginComponent
-    },{
-      path: 'contact',
-      component: ContactComponent
-    }];
+
+  const routes = [
+    { path:'', redirectTo: 'login', pathMatch: 'full' },
+    { path:'login', component: LoginComponent },
+    { path: 'contact', component: ContactListComponent }
+    ];
 
 export function getHttp(backend: ConnectionBackend, options: RequestOptions) {
   return new HttpService(backend, options);
 }
 
+
 @NgModule({
   declarations: [
     AppComponent,
     ContactListComponent,
-    ContactListItemComponent,
     ContactDialogComponent,
+    ContactListComponent,
     MapDialogComponent,
     LoginComponent,
     ContactComponent,
     VibrationDirective,
-    ContactAddressPipe
+    ContactAddressPipe,
+    ToolbarComponent,
+    ContactCardComponent,
+    ContactInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -78,6 +81,7 @@ export function getHttp(backend: ConnectionBackend, options: RequestOptions) {
     UserService,
     UserApiService,
     AuthenticationService,
+    ToolbarService,
     DeviceService],
   bootstrap: [AppComponent],
   entryComponents:[

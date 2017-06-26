@@ -1,20 +1,54 @@
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Contact} from "../contact";
+import {ContactService} from "../services/contact.service";
+import {DialogService} from "../services/dialog.service";
 
 @Component({
   selector: 'app-contact-list',
   templateUrl: './contact-list.component.html',
   styleUrls: ['./contact-list.component.css']
 })
+
 export class ContactListComponent implements OnInit {
 
-  @Input() contacts: [Contact];
-  @Output() editContact: EventEmitter<Contact> = new EventEmitter();
-  @Output() removeContact: EventEmitter<Contact> = new EventEmitter();
-  @Output() showContactOnMap: EventEmitter<Contact> = new EventEmitter();
+  contacts =[];
 
-  constructor() { }
+  constructor(public dialog: DialogService,
+              public contactService: ContactService) {}
 
-  ngOnInit() {}
+  ngOnInit():void {
+    this.reloadContacts();
+  }
+
+  addContact() {
+    this.editAndSaveContact(null);
+  }
+  editContact(contact: Contact){
+    this.editAndSaveContact(contact);
+  }
+
+  removeContact(contact: Contact){
+    this.contactService.deleteContact(contact).subscribe(data => this.reloadContacts());
+  }
+
+  showContactOnMap(contact: Contact){
+    let fullAddress = contact.streetAddress + ', ' + contact.city;
+    this.dialog.mapDialog(fullAddress);
+  }
+
+  private editAndSaveContact(contact) {
+    this.dialog.contactDialog(contact).subscribe(contact => {
+      if (contact) {
+        this.contactService.saveContact(contact).subscribe(data => this.reloadContacts());
+      }
+    });
+  }
+
+  reloadContacts(){
+    this.contactService.loadContacts().subscribe(contacts => {
+      this.contacts = contacts;
+    });
+  }
+
 
 }

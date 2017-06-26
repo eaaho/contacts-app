@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Contact} from "./contact";
-import {DialogService} from "./services/dialog.service";
-import {ContactService} from "./services/contact.service";
-
+import { Contact} from "./contact";
+import { ActivatedRoute, Router} from "@angular/router";
+import { ContactService} from "./services/contact.service";
+import { ToolbarProperties, ToolbarService} from "app/toolbar/toolbar.service";
 
 @Component({
   selector: 'app-contact',
@@ -11,43 +11,45 @@ import {ContactService} from "./services/contact.service";
 })
 export class ContactComponent implements OnInit {
 
-  contacts =[];
+  contact: Contact;
+  isValid: boolean;
 
-  constructor(public dialog: DialogService,
-              public contactService: ContactService) {}
-
-  ngOnInit():void {
-    this.reloadContacts();
+  constructor(private route: ActivatedRoute, private router: Router,
+              private contactService: ContactService, private  toolbar: ToolbarService)
+  {
+    this.contact = new Contact();
+    this.isValid = false;
   }
 
-  addContact() {
-    this.editAndSaveContact(null);
-  }
-  onEditContact(contact: Contact){
-    this.editAndSaveContact(contact);
+    save() {
+    this.contactService.saveContact(this.contact).subscribe(data => this.router.navigate(['/contacts']));
   }
 
-  onDeleteContact(contact: Contact){
-    this.contactService.deleteContact(contact).subscribe(data => this.reloadContacts());
-  }
-
-  onShowContactOnMap(contact: Contact){
-    let fullAddress = contact.streetAddress + ', ' + contact.city;
-    this.dialog.mapDialog(fullAddress);
-  }
-
-  private editAndSaveContact(contact) {
-    this.dialog.contactDialog(contact).subscribe(contact => {
-      if (contact) {
-        this.contactService.saveContact(contact).subscribe(data => this.reloadContacts());
+  ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      let id = +params['id'];
+      this.toolbar.create(new ToolbarProperties({
+        title: id ? 'Edit Contact' : 'New Contact',
+        submitAction: this.save.bind(this),
+        submitDisabled: true,
+        backEnabled: true
+      }));
+      if (id) {
+        this.contactService.findContactById(id).subscribe(contact => {
+          this.contact = contact || new Contact();
+        });
+      } else {
+        this.contact = new Contact();
       }
+      this.validate();
     });
   }
 
-  reloadContacts(){
-    this.contactService.loadContacts().subscribe(contacts => {
-      this.contacts = contacts;
-    });
+  validate() {
+    let valid = !!(this.contact.firstName && this.contact.lastName);
+    if (valid != this.isValid) {
+      this.toolbar.disableSubmit(!valid);
+      this.isValid = valid;
+    }
   }
-
 }
