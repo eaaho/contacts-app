@@ -1,0 +1,21 @@
+{
+    "name": "com.ekoodi.contactsapp",
+    "version": "1.0.0",
+    "displayName": "ContactsApp",
+    "cordova": {
+        "platforms": [
+            "android"
+        ],
+        "plugins": {
+            "cordova-plugin-whitelist": {},
+            "cordova-plugin-crosswalk-webview": {},
+            "cordova-plugin-vibration": {}
+        }
+    },
+    "dependencies": {
+        "cordova-android": "^6.2.1",
+        "cordova-plugin-crosswalk-webview": "~2.3.0",
+        "cordova-plugin-vibration": "^2.1.5",
+        "cordova-plugin-whitelist": "1"
+    }
+}
