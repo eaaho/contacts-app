@@ -15,7 +15,7 @@ export class ContactComponent implements OnInit {
   isValid: boolean;
 
   constructor(private route: ActivatedRoute, private router: Router,
-              private contactService: ContactService, private  toolbar: ToolbarService)
+              private contactService: ContactService, private toolbar: ToolbarService)
   {
     this.contact = new Contact();
     this.isValid = false;

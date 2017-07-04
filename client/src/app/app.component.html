@@ -1,5 +1,6 @@
-<md-sidenav-container class="app-sidenav-container">
+<div *tdLoading="'overlayStarSyntax'; mode:'indeterminate'; type:'circular'; strategy:'overlay'"></div>
 
+<md-sidenav-container class="app-sidenav-container">
     <md-sidenav *ngIf="toolbarVisible" class="app-sidenav" #sideNav name="sideNav" [mode]="sidenavMode" color="primary" [opened]="sidenavMode == 'side'">
       <div fxLayout="row" class="app-sidenav-sidenav">
         <div fxLayout="column" fxLayoutAlign="start start">

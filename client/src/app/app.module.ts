@@ -6,7 +6,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import 'rxjs/add/operator/toPromise';
 import 'hammerjs';
 import 'lodash';
-import { MaterialRootModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppComponent } from "./app.component";
 import { ContactListComponent } from './contact/contact-list/contact-list.component';
@@ -25,12 +24,14 @@ import { DeviceService } from "./contact/services/device.service";
 import { HttpService } from "./contact/utils/http.service";
 import { UserService } from "./contact/user/services/user.service";
 import { UserApiService } from "./contact/user/services/user-api.service";
-import { ConnectionBackend, RequestOptions, XHRBackend } from "@angular/http";
+import { ConnectionBackend, RequestOptions, XHRBackend, HttpModule } from "@angular/http";
 import { AuthenticationService } from "./contact/user/services/authentication.service";
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { ToolbarService } from "./toolbar/toolbar.service";
 import { ContactCardComponent } from './contact/contact-card/contact-card.component';
 import { ContactInfoComponent } from './contact/contact-info/contact-info.component';
+import { CovalentCommonModule, CovalentLoadingModule, CovalentStepsModule } from '@covalent/core';
+import { MaterialComponentsModule } from "./material/material.module";
 
 
   const routes = [
@@ -64,9 +65,13 @@ export function getHttp(backend: ConnectionBackend, options: RequestOptions) {
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
-    MaterialRootModule,
+    MaterialComponentsModule,
     FlexLayoutModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    CovalentCommonModule,
+    CovalentLoadingModule,
+    CovalentStepsModule,
+    HttpModule
   ],
   providers: [
     ContactService,

@@ -8,9 +8,11 @@ export class HttpService extends Http {
   private authHeaderName: string = 'Authorization';
   private authHeaderBearerPrefix: string = 'Bearer ';
   private authToken: string;
+  private firstLogin: boolean;
 
   constructor(backend: ConnectionBackend, private defaultOptions: RequestOptions) {
     super(backend, defaultOptions);
+    this.firstLogin = false;
   }
   request(url: string | Request, options?: RequestOptionsArgs): Observable<Response> {
     if (typeof url === 'string') {
@@ -40,6 +42,23 @@ export class HttpService extends Http {
 
   saveToken(token: string) {
     this.authToken = token;
+    this.firstLogin = true;
+  }
+
+  deleteToken(){
+    this.authToken = null;
+  }
+
+  tokenExist(){
+    if (this.authToken == null){
+      return (false);
+    } else {
+      return (true);
+    }
+  }
+
+  hasTokenBeenAcquired(){
+    return this.firstLogin;
   }
 
   private intercept(observable: Observable<Response>): Observable<Response> {

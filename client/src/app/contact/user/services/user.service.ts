@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {Observable} from "rxjs/Observable";
-import {environment} from "../../../../environments/environment";
-import {AuthenticationService} from "./authentication.service";
-import {UserApiService} from "./user-api.service";
+import { Observable } from "rxjs/Observable";
+import { environment } from "../../../../environments/environment";
+import { AuthenticationService } from "./authentication.service";
+import { UserApiService } from "./user-api.service";
 
 @Injectable()
 export class UserService {

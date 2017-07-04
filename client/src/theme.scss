@@ -1,18 +1,20 @@
 @import '~@angular/material/theming';
+@import '~@angular/material/theming';
+@import '~@covalent/core/theming/all-theme';
 
 @include mat-core();
 
 //https://material.io/color/#!/?view.left=0&view.right=0&primary.color=0277BD
-$ca-primary: mat-palette($mat-light-blue, 800);
-$ca-accent: mat-palette($mat-pink, 500);
-$ca-warn: mat-palette($mat-red);
+$primary: mat-palette($mat-light-blue, 800);
+$accent: mat-palette($mat-pink, 500);
+$warn: mat-palette($mat-red);
+$theme: mat-light-theme($primary, $accent, $warn);
 
-$ca-theme: mat-light-theme($ca-primary, $ca-accent, $ca-warn);
-
-@include angular-material-theme($ca-theme);
+@include angular-material-theme($theme);
+@include covalent-theme($theme);
 
 .app-color-primary {
-  background: mat-color($ca-primary);
+  background: mat-color($primary);
 }
 
 .app-color-primary-light {
@@ -24,5 +26,5 @@ $ca-theme: mat-light-theme($ca-primary, $ca-accent, $ca-warn);
 }
 
 .app-color-accent {
-  background: mat-color($ca-accent);
+  background: mat-color($accent);
 }
