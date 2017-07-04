@@ -30,7 +30,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { ToolbarService } from "./toolbar/toolbar.service";
 import { ContactCardComponent } from './contact/contact-card/contact-card.component';
 import { ContactInfoComponent } from './contact/contact-info/contact-info.component';
-import { CovalentCommonModule, CovalentLoadingModule, CovalentStepsModule } from '@covalent/core';
+import { CovalentCommonModule, CovalentLoadingModule } from '@covalent/core';
 import { MaterialComponentsModule } from "./material/material.module";
 
 
@@ -70,7 +70,6 @@ export function getHttp(backend: ConnectionBackend, options: RequestOptions) {
     RouterModule.forRoot(routes),
     CovalentCommonModule,
     CovalentLoadingModule,
-    CovalentStepsModule,
     HttpModule
   ],
   providers: [

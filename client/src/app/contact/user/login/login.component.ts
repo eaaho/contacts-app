@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
-import {Operator} from "../operator";
-import {UserService} from "../services/user.service";
-import {Subscription} from "rxjs/Subscription";
+import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
+import { Operator } from "../operator";
+import { UserService } from "../services/user.service";
+import { Subscription } from "rxjs/Subscription";
 
 @Component({
   selector: 'app-login',
